@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class LWindow extends JFrame {
 
@@ -9,11 +10,13 @@ public class LWindow extends JFrame {
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
-        setVisible(true);
-
-        //Fullscreen
+        this.setLayout(new BorderLayout());
+        l.setFont(new Font("Arial Black", Font.PLAIN, 400));
+        p.add(l);
+        this.add(p, BorderLayout.CENTER);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setUndecorated(true);
+        p.setBackground(Color.GREEN);
+        p.setSize(this.getWidth(),this.getHeight());
         setVisible(true);
     }
 }
