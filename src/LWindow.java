@@ -31,8 +31,10 @@ public class LWindow extends JFrame {
         device.setFullScreenWindow(this);
         p.setBackground(Color.GREEN);
         p.setSize(this.getWidth(),this.getHeight());
+        //Settings for Liednummer Label
         l.setSize(500,500);
         l.setLocation(100,0);
+        //Settings for Bauchbinden Label
         l.setSize(1000,500);
         l2.setLocation(0,0);
         setVisible(true);
