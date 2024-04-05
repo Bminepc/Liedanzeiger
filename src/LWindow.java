@@ -10,9 +10,11 @@ public class LWindow extends JFrame {
     JPanel p = new JPanel();
     JLabel l = new JLabel("");
     JLabel l2 = new JLabel("");
+    JLabel l3 = new JLabel("");
     //TODO This ist just Debug! Please empty after testing
     String text = "123<br/>1+2+3";
-    String Bauchbinde = "Halleluja<br/>Pentatonix";
+    String BauchbindeTop = "Moonlight Sonata";
+    String BauchbindeBottom = "Mozzart";
     public LWindow() {
         super("Liedanzeiger");
         setResizable(true);
@@ -22,10 +24,16 @@ public class LWindow extends JFrame {
         //this.setLayout(new BorderLayout());
         l.setFont(new Font("Arial Black", Font.PLAIN, 100));
         l.setText("<html>" + text + "</html>");
+        l.setForeground(Color.WHITE);
         p.add(l);
-        l2.setFont(new Font("Arial Black", Font.PLAIN, 100));
-        l2.setText("<html>" + Bauchbinde + "</html>");
+        l2.setFont(new Font("Arial Black", Font.PLAIN, 80));
+        l2.setText(BauchbindeTop);
+        l2.setForeground(Color.WHITE);
         p.add(l2);
+        l3.setFont(new Font("Arial Black", Font.PLAIN, 50));
+        l3.setText(BauchbindeBottom);
+        l3.setForeground(Color.WHITE);
+        p.add(l3);
         this.add(p);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         device.setFullScreenWindow(this);
@@ -34,9 +42,12 @@ public class LWindow extends JFrame {
         //Settings for Liednummer Label
         l.setSize(500,500);
         l.setLocation(100,0);
-        //Settings for Bauchbinden Label
-        l.setSize(1000,500);
-        l2.setLocation(0,0);
+        //Settings for Bauchbinden Top Label
+        l2.setSize(1000,500);
+        l2.setLocation(50,600);
+        //Settings for Bauchbinden Bottom Label
+        l3.setSize(1000,500);
+        l3.setLocation(53,680);
         setVisible(true);
         this.requestFocus();
         this.addKeyListener(new KeyListener() {
