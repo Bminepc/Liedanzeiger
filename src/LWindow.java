@@ -10,7 +10,8 @@ public class LWindow extends JFrame {
     GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
 
     JPanel p = new JPanel();
-    JLabel l = new JLabel("Bananas");
+    JLabel l = new JLabel("");
+    String text = "";
     public LWindow() {
         super("Liedanzeiger");
         setResizable(true);
@@ -30,11 +31,15 @@ public class LWindow extends JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 if(e.getKeyChar() == '\n'){
-                    l.setText("");
-                }else {
-                    l.setText(l.getText() + e.getKeyChar());
+                    text = "";
+                }else if(e.getKeyChar() == ',') {
+                   text = text + "<br/>";
+                }else{
+                        text = text + e.getKeyChar();
+                    }
+                l.setText("<html>" + text + "</html>");
                 }
-            }
+
 
             @Override
             public void keyPressed(KeyEvent e) {
