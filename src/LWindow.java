@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class LWindow extends JFrame {
 
@@ -11,20 +9,32 @@ public class LWindow extends JFrame {
 
     JPanel p = new JPanel();
     JLabel l = new JLabel("");
-    String text = "";
+    JLabel l2 = new JLabel("");
+    //TODO This ist just Debug! Please empty after testing
+    String text = "123<br/>1+2+3";
+    String Bauchbinde = "Halleluja<br/>Pentatonix";
     public LWindow() {
         super("Liedanzeiger");
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
-        this.setLayout(new BorderLayout());
-        l.setFont(new Font("Arial Black", Font.PLAIN, 400));
+        p.setLayout(null);
+        //this.setLayout(new BorderLayout());
+        l.setFont(new Font("Arial Black", Font.PLAIN, 100));
+        l.setText("<html>" + text + "</html>");
         p.add(l);
-        this.add(p, BorderLayout.CENTER);
+        l2.setFont(new Font("Arial Black", Font.PLAIN, 100));
+        l2.setText("<html>" + Bauchbinde + "</html>");
+        p.add(l2);
+        this.add(p);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         device.setFullScreenWindow(this);
         p.setBackground(Color.GREEN);
         p.setSize(this.getWidth(),this.getHeight());
+        l.setSize(500,500);
+        l.setLocation(100,0);
+        l.setSize(1000,500);
+        l2.setLocation(0,0);
         setVisible(true);
         this.requestFocus();
         this.addKeyListener(new KeyListener() {
