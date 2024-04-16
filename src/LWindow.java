@@ -15,6 +15,7 @@ public class LWindow extends JFrame {
     String text = "123<br/>1+2+3";
     String BauchbindeTop = "Moonlight Sonata";
     String BauchbindeBottom = "Mozzart";
+
     public LWindow() {
         super("Liedanzeiger");
         setResizable(true);
@@ -41,13 +42,13 @@ public class LWindow extends JFrame {
         p.setSize(this.getWidth(),this.getHeight());
         //Settings for Liednummer Label
         l.setSize(500,500);
-        l.setLocation(100,0);
+        l.setLocation((int) (this.getWidth()*0.05), (int) (this.getHeight()*-0.05));
         //Settings for Bauchbinden Top Label
         l2.setSize(1000,500);
-        l2.setLocation(50,600);
+        l2.setLocation((int) (this.getWidth()*0.02), (int) (this.getHeight()*0.6));
         //Settings for Bauchbinden Bottom Label
         l3.setSize(1000,500);
-        l3.setLocation(53,680);
+        l3.setLocation((int) (this.getWidth()*0.02) +3, (int) (this.getHeight()*0.7));
         setVisible(true);
         this.requestFocus();
         this.addKeyListener(new KeyListener() {
@@ -57,7 +58,7 @@ public class LWindow extends JFrame {
                     text = "";
                 }else if(e.getKeyChar() == ',') {
                    text = text + "<br/>";
-                }else{
+                }else {
                         text = text + e.getKeyChar();
                     }
                 l.setText("<html>" + text + "</html>");
