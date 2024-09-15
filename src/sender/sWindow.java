@@ -18,6 +18,7 @@ public class sWindow extends javax.swing.JFrame {
     JButton send;
     public sWindow() {
         super("Liedanzeiger Eingabe");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new JPanel();
         lied = new JTextField(10);
         strophe = new JTextField(20);
