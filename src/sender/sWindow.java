@@ -1,7 +1,6 @@
 package sender;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URI;
@@ -16,6 +15,7 @@ public class sWindow extends javax.swing.JFrame {
     JTextField strophe;
     JLabel strophelabel;
     JButton send;
+    JButton clear;
     public sWindow() {
         super("Liedanzeiger Eingabe");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,11 +41,31 @@ public class sWindow extends javax.swing.JFrame {
                 }
             }
         });
+        clear = new JButton("Leeren");
+        clear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    HttpClient client = HttpClient.newHttpClient();
+                    String jsonInputString = "{\"number\": \"-1\"}";
+
+                    HttpRequest request = HttpRequest.newBuilder()
+                            .uri(new URI("http://81.169.152.161:5011/write-number"))
+                            .header("Content-Type", "application/json")
+                            .POST(HttpRequest.BodyPublishers.ofString(jsonInputString))
+                            .build();
+                    client.send(request, HttpResponse.BodyHandlers.ofString());
+                } catch (Exception ese) {
+                }
+                lied.setText("");
+                strophe.setText("");
+            }
+        });
         panel.add(liedlabel);
         panel.add(lied);
         panel.add(strophelabel);
         panel.add(strophe);
         panel.add(send);
+        panel.add(clear);
         this.add(panel);
         this.pack();
         this.setVisible(true);
