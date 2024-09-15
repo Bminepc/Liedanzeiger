@@ -1,31 +1,40 @@
+package viewer;
+
 import java.net.URI;
 import java.net.http.*;
 
 public class ApiHandler extends Thread{
 
     private LWindow window;
+    private String prev;
 
     public ApiHandler(LWindow lWindow){
         window = lWindow;
+        prev = "";
     }
 
     private void updateText(String text){
-        if (text.equals("-1")){
-            window.updateText("");
-        }else {
-            window.updateText(text);
+        System.out.println(text);
+        System.out.println(prev);
+        if(!prev.equals(text)) {
+            if (text.equals("-1")) {
+                window.updateText("");
+            } else {
+                window.updateText(text);
+            }
         }
+        prev = text;
     }
 
 
     @Override
     public void run() {
         while (true){
-            /*try {
-                this.wait(1000);
+            try {
+                sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            }*/
+            }
             try {
                 HttpClient client = HttpClient.newHttpClient();
 
@@ -35,10 +44,8 @@ public class ApiHandler extends Thread{
                         .build();
 
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                System.out.println(response.body());
                 String[] temp = response.body().toString().split(":");
                 temp = temp[1].split("\"");
-                System.out.println(temp[1]);
                 this.updateText(temp[1]);
             } catch (Exception e) {
                 e.printStackTrace();

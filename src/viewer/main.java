@@ -1,4 +1,4 @@
-import javax.swing.*;
+package viewer;
 
 public class main {
 
