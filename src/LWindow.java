@@ -19,6 +19,7 @@ public class LWindow extends JFrame {
         pack();
         this.setLayout(new BorderLayout());
         l.setFont(new Font("Arial Black", Font.PLAIN, 400));
+        l.setForeground(Color.WHITE);
         p.add(l);
         this.add(p, BorderLayout.CENTER);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -37,7 +38,7 @@ public class LWindow extends JFrame {
                 }else{
                         text = text + e.getKeyChar();
                     }
-                l.setText("<html>" + text + "</html>");
+                updateText(text);
                 }
 
 
@@ -52,5 +53,9 @@ public class LWindow extends JFrame {
             }
         });
 
+    }
+
+    public void updateText(String text){
+        l.setText("<html>" + text + "</html>");
     }
 }

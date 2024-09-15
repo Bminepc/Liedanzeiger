@@ -3,6 +3,8 @@ import javax.swing.*;
 public class main {
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(LWindow::new);
+        LWindow window = new LWindow();
+        ApiHandler apiHandler = new ApiHandler(window);
+        apiHandler.start();
     }
 }
